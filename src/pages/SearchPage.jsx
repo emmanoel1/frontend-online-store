@@ -1,5 +1,5 @@
+// TELA PRINCIPAL
 import React from 'react';
-
 import ShoppingCart from '../components/ShoppingCart';
 
 class SearchPage extends React.Component {

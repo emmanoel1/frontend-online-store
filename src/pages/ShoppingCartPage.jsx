@@ -1,3 +1,4 @@
+// PÁGINA DE BUSCAS
 import React from 'react';
 
 class ShoppingCartPage extends React.Component {
