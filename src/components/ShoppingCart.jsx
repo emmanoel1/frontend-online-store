@@ -10,12 +10,6 @@ class ShoppingCart extends React.Component {
 
   render() {
     return (
-      // <p
-      //   className="shopping_cart_button"
-      //   data-testid="shopping-cart-button"
-      // >
-      //   Carrinho
-      // </p>
       <p>
         <Link
           to="/ShoppingCartPage"
