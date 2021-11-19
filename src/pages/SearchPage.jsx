@@ -2,7 +2,7 @@ import React from 'react';
 
 import ShoppingCart from '../components/ShoppingCart';
 
-class App extends React.Component {
+class SearchPage extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -22,4 +22,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default SearchPage;
