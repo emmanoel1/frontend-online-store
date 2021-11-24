@@ -1,42 +1,59 @@
-.App {
-  text-align: center;
+html {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*, *:before, *:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
-@media ( prefers-reduced-motion : no-preference ) {
-
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-
+.conteiner_categories {
+  background: #d3d1d1;
+  margin: auto;
+  width: 80vw;
 }
 
-.App-header {
+.conteiner_categories > ul {
+  border: solid 1px black;
+  width: 20%;
+}
+
+.conteiner_categories > ul > li {
+  list-style-type: none;
+  margin: 10px;
+}
+
+.search {
   align-items: center;
-  background-color: #282c34;
-  color: white;
+  border: solid 1px black;
   display: flex;
-  flex-direction: column;
-  font-size: calc(10px + 2vmin);
-  justify-content: center;
-  min-height: 100vh;
+  height: 50px;
+  justify-content: space-around;
+  margin: auto;
+  width: 80vw;
 }
 
-.App-link {
-  color: #61dafb;
+.search div {
+  border: solid 1px;
+  border-radius: 18px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  width: 50%;
 }
 
-@keyframes App-logo-spin {
+.search p > a {
+  background: url(./img/icon_carrinho.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 40px;
+  overflow: hidden;
+  text-indent: -1000%;
+  width: 40px;
+}
 
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+p {
+  text-align: center;
 }
