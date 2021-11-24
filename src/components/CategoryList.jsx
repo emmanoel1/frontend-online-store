@@ -26,7 +26,7 @@ class CategoryList extends React.Component {
         <ul>
           {categories.map((category) => (
             <li key={ category.id }>
-              <Link to={ `/${category.id}` } data-testid="category">
+              <Link to={ `CategoryPage/${category.id}` } data-testid="category">
                 { category.name}
               </Link>
             </li>
