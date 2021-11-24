@@ -1,27 +1,31 @@
 // PÁGINA DE BUSCAS
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getProductsFromCategoryAndQuery } from '../services/api';
 import CategoryList from '../components/CategoryList';
 
 class CategoryPage extends React.Component {
   constructor() {
     super();
     this.state = {
+      listProductsCategory: [],
     };
   }
 
   componentDidMount() {
     const { match } = this.props;
     const { id } = match.params;
-    // getMusics(id)
-    //   .then((response) => this.setState({
-    //     musics: [...response],
-    //     artistName: response[0].artistName,
-    //     collectionName: response[0].collectionName,
-    //   }));
+    console.log(id);
+    getProductsFromCategoryAndQuery(id)
+    // https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}_ID&q=${query} ex: MLB1384
+      .then((response) => this.setState({
+        listProductsCategory: [response.results],
+      }));
   }
 
   render() {
+    const { listProductsCategory } = this.state;
+    console.log(listProductsCategory);
     return (
       <>
         <div>

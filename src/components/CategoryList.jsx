@@ -20,7 +20,7 @@ class CategoryList extends React.Component {
 
   render() {
     const { categories } = this.state;
-    console.log(categories);
+    // console.log(categories);
     return (
       <div className="conteiner_categories">
         <ul>
