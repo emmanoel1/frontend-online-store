@@ -44,7 +44,7 @@ html {
 }
 
 .search p > a {
-  background: url(./img/icon_carrinho.png);
+  background: url('./img/icon_carrinho.png');
   background-repeat: no-repeat;
   background-size: contain;
   display: block;
