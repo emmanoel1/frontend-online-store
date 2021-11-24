@@ -2,6 +2,7 @@
 import React from 'react';
 import ShoppingCart from '../components/ShoppingCart';
 import CategoryList from '../components/CategoryList';
+import Button from '../components/Button';
 
 class SearchPage extends React.Component {
   constructor() {
@@ -14,8 +15,11 @@ class SearchPage extends React.Component {
     return (
       <div data-testid="home-initial-message">
         <div className="search">
-          <div>aqui vai ter um input</div>
+          <div>
+            <input type="text" data-testid="query-input" />
+          </div>
           <ShoppingCart />
+          <Button data-testid="query-button">Adicionar</Button>
         </div>
         <p>Digite algum termo de pesquisa ou escolha uma categoria.</p>
         <CategoryList />
