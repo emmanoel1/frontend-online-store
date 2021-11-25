@@ -1,5 +1,6 @@
+// {/* Requisito 4 */}
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { getCategories } from '../services/api';
 
 class CategoryList extends React.Component {
@@ -20,18 +21,20 @@ class CategoryList extends React.Component {
 
   render() {
     const { categories } = this.state;
-    // console.log(categories);
+    console.log(categories);
     return (
-      <div className="conteiner_categories">
-        <ul>
-          {categories.map((category) => (
-            <li key={ category.id }>
-              <Link to={ `CategoryPage/${category.id}` } data-testid="category">
-                { category.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+      <div className="content_categories">
+        {categories.map((category) => (
+          <label key={ category.id } htmlFor={ category.id } data-testid="category">
+            <input
+              type="radio"
+              name="category"
+              value={ category.name }
+              id={ category.id }
+            />
+            { category.name }
+          </label>
+        ))}
       </div>
     );
   }

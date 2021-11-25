@@ -18,7 +18,9 @@ class SearchPage extends React.Component {
           <ShoppingCart />
         </div>
         <p>Digite algum termo de pesquisa ou escolha uma categoria.</p>
-        <CategoryList />
+        <div className="conteiner">
+          <CategoryList />
+        </div>
       </div>
     );
   }

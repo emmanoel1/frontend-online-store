@@ -32,7 +32,9 @@ class CategoryPage extends React.Component {
           <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
         </div>
         <h3>Página de lista de categorias</h3>
-        <CategoryList />
+        <div className="conteiner">
+          <CategoryList />
+        </div>
       </>
     );
   }

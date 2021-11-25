@@ -8,22 +8,6 @@ html {
   padding: 0;
 }
 
-.conteiner_categories {
-  background: #d3d1d1;
-  margin: auto;
-  width: 80vw;
-}
-
-.conteiner_categories > ul {
-  border: solid 1px black;
-  width: 20%;
-}
-
-.conteiner_categories > ul > li {
-  list-style-type: none;
-  margin: 10px;
-}
-
 .search {
   align-items: center;
   border: solid 1px black;
@@ -56,4 +40,19 @@ html {
 
 p {
   text-align: center;
+}
+
+.conteiner {
+  background: #d3d1d1;
+  margin: auto;
+  width: 80vw;
+}
+
+.content_categories {
+  border: solid 1px black;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  width: 28%;
 }
