@@ -51,7 +51,7 @@ class CategoryList extends React.Component {
             </label>
           ))}
         </div>
-        <div>
+        <div className="products-results">
           {searchProductsFromCategory.map((product) => (
             <div key={ product.id }>
               <p>

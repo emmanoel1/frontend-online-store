@@ -46,6 +46,7 @@ p {
   background: #d3d1d1;
   margin: auto;
   width: 80vw;
+  display: flex;
 }
 
 .content_categories {
