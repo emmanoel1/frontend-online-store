@@ -1,14 +1,17 @@
 // {/* Requisito 4 */}
 import React from 'react';
+// import { getCategories } from '../services/api';
 // import { Link } from 'react-router-dom';
-import { getCategories } from '../services/api';
+import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 
 class CategoryList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       categories: [],
+      searchProductsFromCategory: [],
     };
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -19,23 +22,45 @@ class CategoryList extends React.Component {
     });
   }
 
+  handleChange(event) {
+    console.log('event_target: ', event.target);
+    const { id, value } = event.target;
+    // console.log(id);
+    console.log(value);
+    getProductsFromCategoryAndQuery(id, '').then((query) => {
+      this.setState({ searchProductsFromCategory: query.results });
+    });
+  }
+
   render() {
-    const { categories } = this.state;
-    console.log(categories);
+    const { categories, searchProductsFromCategory } = this.state;
+    console.log(searchProductsFromCategory);
     return (
-      <div className="content_categories">
-        {categories.map((category) => (
-          <label key={ category.id } htmlFor={ category.id } data-testid="category">
-            <input
-              type="radio"
-              name="category"
-              value={ category.name }
-              id={ category.id }
-            />
-            { category.name }
-          </label>
-        ))}
-      </div>
+      <>
+        <div className="content_categories">
+          {categories.map((category) => (
+            <label key={ category.id } htmlFor={ category.id } data-testid="category">
+              <input
+                type="radio"
+                name="category"
+                value={ category.name }
+                id={ category.id }
+                onChange={ this.handleChange } // Requisito 6 - Função para chamar a categoria
+              />
+              { category.name }
+            </label>
+          ))}
+        </div>
+        <div>
+          {searchProductsFromCategory.map((product) => (
+            <div key={ product.id }>
+              <p>
+                { product.title }
+              </p>
+            </div>
+          ))}
+        </div>
+      </>
     );
   }
 }
