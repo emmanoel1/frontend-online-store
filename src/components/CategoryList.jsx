@@ -23,7 +23,7 @@ class CategoryList extends React.Component {
   }
 
   handleChange(event) {
-    console.log('event_target: ', event.target);
+    // console.log('event_target: ', event.target);
     const { id, value } = event.target;
     // console.log(id);
     console.log(value);
@@ -56,6 +56,9 @@ class CategoryList extends React.Component {
             <div key={ product.id }>
               <p>
                 { product.title }
+              </p>
+              <p>
+                { product.price }
               </p>
             </div>
           ))}
