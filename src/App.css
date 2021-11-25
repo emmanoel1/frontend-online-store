@@ -44,9 +44,9 @@ p {
 
 .conteiner {
   background: #d3d1d1;
+  display: flex;
   margin: auto;
   width: 80vw;
-  display: flex;
 }
 
 .content_categories {
