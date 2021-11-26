@@ -9,6 +9,7 @@ class Content extends React.Component {
       <Switch>
         <Route exact path="/" component={ SearchPage } />
         <Route exact path="/ShoppingCartPage" component={ ShoppingCartPage } />
+        <Route exact path="/:id" component={ SearchPage } />
       </Switch>
     );
   }
