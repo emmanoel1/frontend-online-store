@@ -1,25 +1,23 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-class ProductsList extends React.Component {
+class ProductList extends React.Component {
   render() {
+    const { title, image, price } = this.props;
     return (
-      <div>
-        <ul>
-          {test.map((product) => (
-            <div key={ product.name } data-testid="product">
-              <p>{ product.name }</p>
-              <img src={ product.img } alt={ product.name } />
-              <p>{ product.price }</p>
-            </div>
-          ))}
-        </ul>
+      <div data-testid="product">
+        <h2>{title}</h2>
+        <img src={ image } alt={ title } />
+        <h2>{price}</h2>
       </div>
     );
   }
 }
 
-// ProductsList.propTypes = {
-// };
+ProductList.propTypes = {
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+};
 
-export default ProductsList;
+export default ProductList;

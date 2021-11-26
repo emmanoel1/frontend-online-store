@@ -53,13 +53,10 @@ class CategoryList extends React.Component {
         </div>
         <div className="products-results">
           {searchProductsFromCategory.map((product) => (
-            <div key={ product.id }>
-              <p>
-                { product.title }
-              </p>
-              <p>
-                { product.price }
-              </p>
+            <div key={ product.id } data-testid="product">
+              <h2>{ product.title }</h2>
+              <img src={ product.thumbnail } alt={ product.title } />
+              <h2>{product.price}</h2>
             </div>
           ))}
         </div>
