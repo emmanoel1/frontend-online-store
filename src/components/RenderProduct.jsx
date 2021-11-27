@@ -1,8 +1,8 @@
-// esse renderiza a lista de todas as categorias
+// {/* Componente do Gmaque que renderiza os produtos */}
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class ProductList extends React.Component {
+class ShowProduct extends React.Component {
   render() {
     const { title, image, price } = this.props;
     return (
@@ -21,4 +21,4 @@ ProductList.propTypes = {
   price: PropTypes.number.isRequired,
 };
 
-export default ProductList;
+export default ShowProduct;

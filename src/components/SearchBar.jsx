@@ -30,26 +30,31 @@ class SearchBar extends React.Component {
     const { typed, searchProductsFromTypedText } = this.state;
     console.log(searchProductsFromTypedText);
     return (
-      <div>
+      <div className="search_bar">
         <input
+          className="input_search"
           type="text"
           data-testid="query-input"
           value={ typed }
           onChange={ this.inputChange }
         />
         <button
+          data-testid="query-button"
           value={ typed }
-          type="button"
+          type="submit"
           onClick={ this.btnClick }
         >
           Pesquisar
         </button>
-        <span className="products-results">
+        <span
+          className="products-results"
+        >
           {searchProductsFromTypedText.map((product) => (
-            <div key={ product.id }>
+            <div key={ product.id } data-testid="product">
               <p>
                 {product.title}
               </p>
+              <img src={ product.thumbnail } alt={ product.title } />
               <p>
                 {product.price}
               </p>

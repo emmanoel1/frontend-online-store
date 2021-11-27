@@ -1,7 +1,6 @@
 // {/* Requisito 4 */}
+// {/* Lista de todas as categorias */}
 import React from 'react';
-// import { getCategories } from '../services/api';
-// import { Link } from 'react-router-dom';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 
 class CategoryList extends React.Component {

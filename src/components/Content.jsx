@@ -1,4 +1,3 @@
-// Essa é a página que é exibida quando clicamos em uma categoria
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import IndexPage from '../pages/IndexPage';
