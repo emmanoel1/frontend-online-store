@@ -14,13 +14,10 @@ class SearchPage extends React.Component {
   render() {
     return (
       <div data-testid="home-initial-message">
-        <div className="search">
+        <div className="heder">
           <p>Digite algum termo de pesquisa ou escolha uma categoria.</p>
           <div>aqui vai ter um input</div>
           <ShoppingCart />
-          {/* <Button data-testid="query-button">Adicionar</Button> */}
-          {/* <input type="text" data-testid="query-input" />
-            <button type="button"> teste </button> */}
         </div>
         <div className="conteiner">
           <CategoryList />

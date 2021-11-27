@@ -1,7 +1,7 @@
 import React from 'react';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 
-class InputAndButton extends React.Component {
+class SearchBar extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -61,4 +61,4 @@ class InputAndButton extends React.Component {
   }
 }
 
-export default InputAndButton;
+export default SearchBar;

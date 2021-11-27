@@ -1,3 +1,4 @@
+// esse renderiza a lista de todas as categorias
 import React from 'react';
 import PropTypes from 'prop-types';
 
