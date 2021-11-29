@@ -22,5 +22,5 @@ class ShoppingCart extends React.Component {
     );
   }
 }
-
+// Start Req8
 export default ShoppingCart;
