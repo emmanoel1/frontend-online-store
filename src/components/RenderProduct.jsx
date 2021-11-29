@@ -15,7 +15,7 @@ class ShowProduct extends React.Component {
   }
 }
 
-ProductList.propTypes = {
+ShowProduct.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
