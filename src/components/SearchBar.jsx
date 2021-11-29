@@ -1,5 +1,6 @@
 import React from 'react';
 import { getProductsFromCategoryAndQuery } from '../services/api';
+import AddToCart from './AddToCart';
 
 class SearchBar extends React.Component {
   constructor() {
@@ -8,6 +9,7 @@ class SearchBar extends React.Component {
       typed: '',
       searchProductsFromTypedText: [],
     };
+
     this.inputChange = this.inputChange.bind(this);
     this.btnClick = this.btnClick.bind(this);
   }
@@ -58,6 +60,10 @@ class SearchBar extends React.Component {
               <p>
                 {product.price}
               </p>
+              <AddToCart
+                productId={ product.id }
+                productName={ product.title }
+              />
             </div>
           ))}
         </span>
