@@ -1,6 +1,5 @@
 // PÁGINA DE BUSCAS
 import React from 'react';
-import CategoryList from '../components/CategoryList';
 
 class ShoppingCartPage extends React.Component {
   constructor() {
@@ -12,10 +11,11 @@ class ShoppingCartPage extends React.Component {
   render() {
     return (
       <>
-        <div>
+        <h1>Esse aqui é a página do carrinho</h1>
+        <div className="conteiner">
           <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
+          {/* O texto acima é parte do requisito 03 e não pode ser apagado  */}
         </div>
-        <CategoryList />
       </>
     );
   }

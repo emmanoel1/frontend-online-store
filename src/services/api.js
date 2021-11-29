@@ -4,7 +4,9 @@ export async function getCategories() {
 }
 
 export async function getProductsFromCategoryAndQuery(categoryId, query) {
-  const queryUrl = `https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}_ID&q=${query}`;
+  const queryUrl = `https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}&q=${query}`;
   const getQueryed = await fetch(queryUrl);
   return getQueryed.json();
 }
+
+// na linha 7 na monitoria porfessor madou tirar o _id
