@@ -11,7 +11,7 @@ class ShowProduct extends React.Component {
 
   render() {
     // const { title, image, price } = this.props;
-    const { products } = this.props;
+    const { products, addBtnFn } = this.props;
     return (
       <div>
         { products.map((product) => (
@@ -19,6 +19,14 @@ class ShowProduct extends React.Component {
             <h2>{product.title}</h2>
             <img src={ product.thumbnail } alt={ product.title } />
             <h2>{product.price}</h2>
+            <button
+              className="button is-primary is-small"
+              data-testid="product-add-to-cart"
+              type="submit"
+              onClick={ addBtnFn }
+            >
+              Adicionar Ao Carrinho
+            </button>
           </div>
         ))}
       </div>
@@ -31,6 +39,7 @@ ShowProduct.propTypes = {
   // image: PropTypes.string.isRequired,
   // price: PropTypes.number.isRequired,
   products: PropTypes.arrayOf(Object).isRequired,
+  addBtnFn: PropTypes.func.isRequired,
 };
 
 export default ShowProduct;

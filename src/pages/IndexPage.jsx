@@ -16,6 +16,7 @@ class SearchPage extends React.Component {
     };
     this.onTypedInput = this.onTypedInput.bind(this);
     this.onClickedBtn = this.onClickedBtn.bind(this);
+    this.addBtnFn = this.addBtnFn.bind(this);
   }
 
   onTypedInput({ target }) {
@@ -29,6 +30,10 @@ class SearchPage extends React.Component {
     getProductsFromCategoryAndQuery('', typed).then((query) => {
       this.setState({ apiResponseFromTyped: query.results });
     });
+  }
+
+  addBtnFn({ target }) {
+    console.log(target);
   }
 
   render() {
@@ -46,7 +51,10 @@ class SearchPage extends React.Component {
         </div>
         <div className="conteiner">
           <CategoryList />
-          <RenderProduct products={ apiResponseFromTyped } />
+          <RenderProduct
+            products={ apiResponseFromTyped }
+            addBtnFn={ this.addBtnFn }
+          />
         </div>
       </div>
     );
