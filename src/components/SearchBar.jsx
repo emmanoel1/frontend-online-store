@@ -1,36 +1,15 @@
 import React from 'react';
-import { getProductsFromCategoryAndQuery } from '../services/api';
-import AddToCart from './AddToCart';
+import PropTypes from 'prop-types';
 
 class SearchBar extends React.Component {
   constructor() {
     super();
     this.state = {
-      typed: '',
-      searchProductsFromTypedText: [],
     };
-
-    this.inputChange = this.inputChange.bind(this);
-    this.btnClick = this.btnClick.bind(this);
-  }
-
-  inputChange({ target }) {
-    this.setState({
-      typed: target.value,
-    });
-  }
-
-  btnClick(event) {
-    const { value } = event.target;
-
-    getProductsFromCategoryAndQuery('', value).then((query) => {
-      this.setState({ searchProductsFromTypedText: query.results });
-    });
   }
 
   render() {
-    const { typed, searchProductsFromTypedText } = this.state;
-    console.log(searchProductsFromTypedText);
+    const { onTypedInput, typed, onClickedBtn } = this.props;
     return (
       <div className="search_bar">
         <input
@@ -38,38 +17,26 @@ class SearchBar extends React.Component {
           type="text"
           data-testid="query-input"
           value={ typed }
-          onChange={ this.inputChange }
+          onChange={ onTypedInput }
         />
         <button
+          className="btn-search button is-primary is-small"
           data-testid="query-button"
           value={ typed }
           type="submit"
-          onClick={ this.btnClick }
+          onClick={ onClickedBtn }
         >
           Pesquisar
         </button>
-        <span
-          className="products-results"
-        >
-          {searchProductsFromTypedText.map((product) => (
-            <div key={ product.id } data-testid="product">
-              <p>
-                {product.title}
-              </p>
-              <img src={ product.thumbnail } alt={ product.title } />
-              <p>
-                {product.price}
-              </p>
-              <AddToCart
-                productId={ product.id }
-                productName={ product.title }
-              />
-            </div>
-          ))}
-        </span>
       </div>
     );
   }
 }
+
+SearchBar.propTypes = {
+  onClickedBtn: PropTypes.func.isRequired,
+  onTypedInput: PropTypes.func.isRequired,
+  typed: PropTypes.string.isRequired,
+};
 
 export default SearchBar;

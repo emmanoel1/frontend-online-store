@@ -27,6 +27,10 @@ html {
   width: 50%;
 }
 
+.btn-search {
+  margin-left: 15px;
+}
+
 .cart_button {
   background: url('./img/icon_carrinho.png');
   background-repeat: no-repeat;

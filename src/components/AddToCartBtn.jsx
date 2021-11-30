@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ShoppingCartPage from '../pages/ShoppingCartPage';
+// import ShoppingCartPage from '../pages/ShoppingCartPage';
 
 class AddToCart extends React.Component {
   constructor() {
@@ -13,7 +13,7 @@ class AddToCart extends React.Component {
   }
 
   btnAdd({ target }) {
-    console.log(target.value);
+    // console.log(target.value);
     this.setState({
       added: target.value,
     });
@@ -21,6 +21,7 @@ class AddToCart extends React.Component {
 
   render() {
     const { added } = this.state;
+    console.log(added);
     const { productName } = this.props;
     return (
       <div>
@@ -32,7 +33,7 @@ class AddToCart extends React.Component {
         >
           Adicionar
         </button>
-        <ShoppingCartPage product={ added } />
+        {/* <ShoppingCartPage product={ added } /> */}
       </div>
     );
   }
