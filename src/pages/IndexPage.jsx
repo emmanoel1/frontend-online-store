@@ -4,7 +4,7 @@ import React from 'react';
 import SearchBar from '../components/heder/SearchBar';
 import ShoppingCart from '../components/heder/ShoppingCart';
 import CategoryList from '../components/CategoryList';
-import RenderProduct from '../components/RenderProduct';
+import RenderProduct from '../components/render_product/RenderProduct';
 // import InputAndButton from '../components/InputAndButton';
 
 import { getProductsFromCategoryAndQuery } from '../services/api';
@@ -44,6 +44,7 @@ class SearchPage extends React.Component {
     const { typed, apiResponseFromTyped } = this.state;
     return (
       <div data-testid="home-initial-message">
+
         <div className="heder">
           <p>Digite algum termo de pesquisa ou escolha uma categoria.</p>
           <SearchBar
@@ -53,6 +54,7 @@ class SearchPage extends React.Component {
           />
           <ShoppingCart />
         </div>
+
         <div className="conteiner">
           <CategoryList />
           <RenderProduct
@@ -60,6 +62,7 @@ class SearchPage extends React.Component {
             // addBtnFn={ this.addBtnFn }
           />
         </div>
+
       </div>
     );
   }
