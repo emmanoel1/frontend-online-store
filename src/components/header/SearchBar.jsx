@@ -20,6 +20,7 @@ class SearchBar extends React.Component {
           onChange={ onTypedInput }
         />
         <button
+          name="buscar"
           className="btn-search button is-primary is-small"
           data-testid="query-button"
           value={ typed }

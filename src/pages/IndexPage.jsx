@@ -12,10 +12,12 @@ class SearchPage extends React.Component {
     super();
     this.state = {
       typed: '',
+      idCategory: '',
       apiResponseFromTyped: [],
     };
     this.onTypedInput = this.onTypedInput.bind(this);
     this.onClickedBtn = this.onClickedBtn.bind(this);
+    this.testes = this.testes.bind(this);
     // this.addBtnFn = this.addBtnFn.bind(this);
   }
 
@@ -27,29 +29,37 @@ class SearchPage extends React.Component {
 
   // Sugiro renomear essa funçao para queryApi pois ela será usada também para filtrar resultados das categorias
   onClickedBtn(event) {
-    console.log('event_target: ', event.target);
-    const { id, value } = event.target;
-    console.log(value);
-    const { typed } = this.state;
+    const { id, name } = event.target;
+    if (name === 'buscar') {
+      const { typed, idCategory } = this.state;
+      this.testes(idCategory, typed);
+    } else {
+      this.setState({ idCategory: id }, () => {
+        const { typed, idCategory } = this.state;
+        this.testes(idCategory, typed);
+      });
+    }
+    // se event.target.name === buscar so roda os ifs
+    // se event.target.name !== buscar resseta o valor do estado (id category = id) e depois roda os ifs
+  }
 
-    if (id !== '' && typed !== '') {
-      getProductsFromCategoryAndQuery(id, typed).then((query) => {
+  testes(idCategory, typed) {
+    if (idCategory !== '' && typed !== '') {
+      console.log('primerio if');
+      getProductsFromCategoryAndQuery(idCategory, typed).then((query) => {
         this.setState({ apiResponseFromTyped: query.results });
       });
     } else if (typed !== '') {
+      console.log('segundo if');
       getProductsFromCategoryAndQuery('', typed).then((query) => {
         this.setState({ apiResponseFromTyped: query.results });
       });
-    } else if (id !== '') {
-      getProductsFromCategoryAndQuery(id).then((query) => {
+    } else if (idCategory !== '') {
+      console.log('terceriro if');
+      getProductsFromCategoryAndQuery(idCategory).then((query) => {
         this.setState({ apiResponseFromTyped: query.results });
       });
     }
-
-    // const { typed } = this.state;
-    // getProductsFromCategoryAndQuery('', typed).then((query) => {
-    //   this.setState({ apiResponseFromTyped: query.results });
-    // });
   }
 
   // addBtnFn({ target }) {
