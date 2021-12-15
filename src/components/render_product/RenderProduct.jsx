@@ -17,10 +17,10 @@ class ShowProduct extends React.Component {
       <div className="products-results">
         { products.map((product) => (
           <div key={ product.id } data-testid="product" className="product">
-            <h2>{product.title}</h2>
             <figure className="product_list">
               <img src={ product.thumbnail } alt={ product.title } />
             </figure>
+            <h2>{product.title}</h2>
             <p className="price">
               <span>R$</span>
               {product.price}

@@ -12,14 +12,14 @@ class ShoppingCart extends React.Component {
 
   render() {
     return (
-      <div className="cart_button">
-        <Link
-          to="/ShoppingCartPage"
-          data-testid="shopping-cart-button"
-        >
+      <Link
+        to="/ShoppingCartPage"
+        data-testid="shopping-cart-button"
+      >
+        <div className="cart_button">
           Carrinho de Compras
-        </Link>
-      </div>
+        </div>
+      </Link>
     );
   }
 }

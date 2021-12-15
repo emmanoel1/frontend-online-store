@@ -1,7 +1,7 @@
 // TELA PRINCIPAL
 import React from 'react';
-import SearchBar from  '../components/heder/SearchBar';
-import ShoppingCart from '../components/heder/ShoppingCart';
+import SearchBar from '../components/header/SearchBar';
+import ShoppingCart from '../components/header/ShoppingCart';
 import CategoryList from '../components/CategoryList';
 import RenderProduct from '../components/render_product/RenderProduct';
 // import InputAndButton from '../components/InputAndButton';

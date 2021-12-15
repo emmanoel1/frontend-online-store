@@ -1,16 +1,29 @@
 .products-results {
   display: grid;
   gap: 20px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .product_list {
-  height: 150px;
-  width: 100px;
+  height: 160px;
+  width: 100%;
 }
 
 .product_list img {
   height: 100%;
   object-fit: contain;
   width: 100%;
+}
+
+.product {
+  align-items: center;
+  background: #fff;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.product h2 {
+  flex-grow: 1;
 }
