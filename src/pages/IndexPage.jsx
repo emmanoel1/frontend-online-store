@@ -1,12 +1,10 @@
 // TELA PRINCIPAL
 import React from 'react';
-
-import SearchBar from '../components/heder/SearchBar';
+import SearchBar from  '../components/heder/SearchBar';
 import ShoppingCart from '../components/heder/ShoppingCart';
 import CategoryList from '../components/CategoryList';
 import RenderProduct from '../components/render_product/RenderProduct';
 // import InputAndButton from '../components/InputAndButton';
-
 import { getProductsFromCategoryAndQuery } from '../services/api';
 
 class SearchPage extends React.Component {

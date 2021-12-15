@@ -1,6 +1,7 @@
 // {/* Componente do Gmaque que renderiza os produtos */}
 import React from 'react';
 import PropTypes from 'prop-types';
+import './render_product.css';
 
 class ShowProduct extends React.Component {
   constructor() {
@@ -13,12 +14,17 @@ class ShowProduct extends React.Component {
     // const { title, image, price } = this.props;
     const { products, addBtnFn } = this.props;
     return (
-      <div>
+      <div className="products-results">
         { products.map((product) => (
-          <div key={ product.id } data-testid="product">
+          <div key={ product.id } data-testid="product" className="product">
             <h2>{product.title}</h2>
-            <img src={ product.thumbnail } alt={ product.title } />
-            <h2>{product.price}</h2>
+            <figure className="product_list">
+              <img src={ product.thumbnail } alt={ product.title } />
+            </figure>
+            <p className="price">
+              <span>R$</span>
+              {product.price}
+            </p>
             <button
               className="button is-primary is-small"
               data-testid="product-add-to-cart"

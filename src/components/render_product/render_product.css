@@ -1,0 +1,16 @@
+.products-results {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.product_list {
+  height: 150px;
+  width: 100px;
+}
+
+.product_list img {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
