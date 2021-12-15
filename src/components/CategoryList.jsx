@@ -1,16 +1,17 @@
 // {/* Requisito 4 */}
 // {/* Lista de todas as categorias */}
 import React from 'react';
-import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
+import PropTypes from 'prop-types';
+import { getCategories } from '../services/api';
 
 class CategoryList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       categories: [],
-      searchProductsFromCategory: [],
+      // searchProductsFromCategory: [],
     };
-    this.handleChange = this.handleChange.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -21,19 +22,20 @@ class CategoryList extends React.Component {
     });
   }
 
-  handleChange(event) {
-    // console.log('event_target: ', event.target);
-    const { id, value } = event.target;
-    // console.log(id);
-    console.log(value);
-    getProductsFromCategoryAndQuery(id, '').then((query) => {
-      this.setState({ searchProductsFromCategory: query.results });
-    });
-  }
+  // handleChange(event) {
+  //   // console.log('event_target: ', event.target);
+  //   const { id, value } = event.target;
+  //   // console.log(id);
+  //   console.log(value);
+  //   getProductsFromCategoryAndQuery(id, '').then((query) => {
+  //     this.setState({ searchProductsFromCategory: query.results });
+  //   });
+  // }
 
   render() {
-    const { categories, searchProductsFromCategory } = this.state;
-    console.log(searchProductsFromCategory);
+    const { categories } = this.state;
+    const { onClickedBtn } = this.props;
+
     return (
       <>
         <div className="content_categories">
@@ -44,13 +46,13 @@ class CategoryList extends React.Component {
                 name="category"
                 value={ category.name }
                 id={ category.id }
-                onChange={ this.handleChange } // Requisito 6 - Função para chamar a categoria
+                onChange={ onClickedBtn } // Requisito 6 - Função para chamar a categoria
               />
               { category.name }
             </label>
           ))}
         </div>
-        <div className="products-results">
+        {/* <div className="products-results">
           {searchProductsFromCategory.map((product) => (
             <div key={ product.id } data-testid="product">
               <h2>{ product.title }</h2>
@@ -58,10 +60,14 @@ class CategoryList extends React.Component {
               <h2>{product.price}</h2>
             </div>
           ))}
-        </div>
+        </div> */}
       </>
     );
   }
 }
+
+CategoryList.propTypes = {
+  onClickedBtn: PropTypes.func.isRequired,
+};
 
 export default CategoryList;

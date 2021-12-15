@@ -26,11 +26,30 @@ class SearchPage extends React.Component {
   }
 
   // Sugiro renomear essa funçao para queryApi pois ela será usada também para filtrar resultados das categorias
-  onClickedBtn() {
+  onClickedBtn(event) {
+    console.log('event_target: ', event.target);
+    const { id, value } = event.target;
+    console.log(value);
     const { typed } = this.state;
-    getProductsFromCategoryAndQuery('', typed).then((query) => {
-      this.setState({ apiResponseFromTyped: query.results });
-    });
+
+    if (id !== '' && typed !== '') {
+      getProductsFromCategoryAndQuery(id, typed).then((query) => {
+        this.setState({ apiResponseFromTyped: query.results });
+      });
+    } else if (typed !== '') {
+      getProductsFromCategoryAndQuery('', typed).then((query) => {
+        this.setState({ apiResponseFromTyped: query.results });
+      });
+    } else if (id !== '') {
+      getProductsFromCategoryAndQuery(id).then((query) => {
+        this.setState({ apiResponseFromTyped: query.results });
+      });
+    }
+
+    // const { typed } = this.state;
+    // getProductsFromCategoryAndQuery('', typed).then((query) => {
+    //   this.setState({ apiResponseFromTyped: query.results });
+    // });
   }
 
   // addBtnFn({ target }) {
@@ -54,7 +73,9 @@ class SearchPage extends React.Component {
         </div>
 
         <div className="conteiner">
-          <CategoryList />
+          <CategoryList
+            onClickedBtn={ this.onClickedBtn }
+          />
           <RenderProduct
             products={ apiResponseFromTyped }
             // addBtnFn={ this.addBtnFn }
