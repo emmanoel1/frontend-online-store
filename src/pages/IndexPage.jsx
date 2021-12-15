@@ -1,11 +1,13 @@
 // TELA PRINCIPAL
 import React from 'react';
-import SearchBar from '../components/SearchBar';
-import ShoppingCart from '../components/ShoppingCart';
+
+import SearchBar from '../components/heder/SearchBar';
+import ShoppingCart from '../components/heder/ShoppingCart';
 import CategoryList from '../components/CategoryList';
 import RenderProduct from '../components/RenderProduct';
-import { getProductsFromCategoryAndQuery } from '../services/api';
 // import InputAndButton from '../components/InputAndButton';
+
+import { getProductsFromCategoryAndQuery } from '../services/api';
 
 class SearchPage extends React.Component {
   constructor() {
@@ -16,7 +18,7 @@ class SearchPage extends React.Component {
     };
     this.onTypedInput = this.onTypedInput.bind(this);
     this.onClickedBtn = this.onClickedBtn.bind(this);
-    this.addBtnFn = this.addBtnFn.bind(this);
+    // this.addBtnFn = this.addBtnFn.bind(this);
   }
 
   onTypedInput({ target }) {
@@ -25,6 +27,7 @@ class SearchPage extends React.Component {
     });
   }
 
+  // Sugiro renomear essa funçao para queryApi pois ela será usada também para filtrar resultados das categorias
   onClickedBtn() {
     const { typed } = this.state;
     getProductsFromCategoryAndQuery('', typed).then((query) => {
@@ -32,9 +35,10 @@ class SearchPage extends React.Component {
     });
   }
 
-  addBtnFn({ target }) {
-    console.log(target);
-  }
+  // addBtnFn({ target }) {
+  //   console.log(target);
+  // }
+  // comentei essa função pois entendo que a ideia do emmanoel é usar isso no futuro
 
   render() {
     const { typed, apiResponseFromTyped } = this.state;
@@ -53,7 +57,7 @@ class SearchPage extends React.Component {
           <CategoryList />
           <RenderProduct
             products={ apiResponseFromTyped }
-            addBtnFn={ this.addBtnFn }
+            // addBtnFn={ this.addBtnFn }
           />
         </div>
       </div>

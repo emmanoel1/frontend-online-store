@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class SearchBar extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-    };
-  }
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //   };
+  // }
 
   render() {
     const { onTypedInput, typed, onClickedBtn } = this.props;
