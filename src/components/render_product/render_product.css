@@ -1,6 +1,8 @@
 .products-results {
   display: grid;
+  flex-grow: 1;
   gap: 20px;
+  grid-auto-rows: 360px;
   grid-template-columns: repeat(4, 1fr);
 }
 
@@ -26,4 +28,5 @@
 
 .product h2 {
   flex-grow: 1;
+  font-size: 14px;
 }

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './shoppingCart.css';
 
 class ShoppingCart extends React.Component {
   constructor() {

@@ -2,7 +2,7 @@
 import React from 'react';
 import SearchBar from '../components/header/SearchBar';
 import ShoppingCart from '../components/header/ShoppingCart';
-import CategoryList from '../components/CategoryList';
+import CategoryList from '../components/categotyList/CategoryList';
 import RenderProduct from '../components/render_product/RenderProduct';
 // import InputAndButton from '../components/InputAndButton';
 import { getProductsFromCategoryAndQuery } from '../services/api';

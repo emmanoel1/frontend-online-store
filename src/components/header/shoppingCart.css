@@ -1,0 +1,10 @@
+.cart_button {
+  background: url('../../img/icon_carrinho.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 40px;
+  overflow: hidden;
+  text-indent: -1000%;
+  width: 40px;
+}

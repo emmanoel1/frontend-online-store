@@ -2,7 +2,8 @@
 // {/* Lista de todas as categorias */}
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getCategories } from '../services/api';
+import './categorylist.css';
+import { getCategories } from '../../services/api';
 
 class CategoryList extends React.Component {
   constructor(props) {
