@@ -14,6 +14,7 @@ class SearchPage extends React.Component {
       typed: '',
       idCategory: '',
       apiResponseFromTyped: [],
+      itemOnCart: '',
     };
     this.onTypedInput = this.onTypedInput.bind(this);
     this.onClickedBtn = this.onClickedBtn.bind(this);
@@ -63,12 +64,14 @@ class SearchPage extends React.Component {
   }
 
   addBtnFn({ target }) {
-    console.log(target.value);
+    this.setState({
+      itemOnCart: target.value,
+    });
   }
   // comentei essa função pois entendo que a ideia do emmanoel é usar isso no futuro
 
   render() {
-    const { typed, apiResponseFromTyped } = this.state;
+    const { typed, apiResponseFromTyped, itemOnCart } = this.state;
     return (
       <div data-testid="home-initial-message">
 
@@ -79,7 +82,9 @@ class SearchPage extends React.Component {
             onClickedBtn={ this.onClickedBtn }
             typed={ typed }
           />
-          <ShoppingCart />
+          <ShoppingCart
+            addedProducts={ itemOnCart }
+          />
         </div>
 
         <div className="conteiner">

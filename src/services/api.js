@@ -9,4 +9,10 @@ export async function getProductsFromCategoryAndQuery(categoryId, query) {
   return getQueryed.json();
 }
 
+export async function getProductsFromProductID(PRODUCT_ID) {
+  const fetchByProduct = `https://api.mercadolibre.com/items/${PRODUCT_ID}`;
+  const productSearched = await fetch(fetchByProduct);
+  return productSearched.json();
+}
+
 // na linha 7 na monitoria porfessor madou tirar o _id
