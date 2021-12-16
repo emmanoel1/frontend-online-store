@@ -29,6 +29,7 @@ class ShowProduct extends React.Component {
               className="button is-primary is-small"
               data-testid="product-add-to-cart"
               type="submit"
+              value={ product.id }
               onClick={ addBtnFn }
             >
               Adicionar Ao Carrinho

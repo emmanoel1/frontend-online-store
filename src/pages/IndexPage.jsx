@@ -18,7 +18,7 @@ class SearchPage extends React.Component {
     this.onTypedInput = this.onTypedInput.bind(this);
     this.onClickedBtn = this.onClickedBtn.bind(this);
     this.testes = this.testes.bind(this);
-    // this.addBtnFn = this.addBtnFn.bind(this);
+    this.addBtnFn = this.addBtnFn.bind(this);
   }
 
   onTypedInput({ target }) {
@@ -62,9 +62,9 @@ class SearchPage extends React.Component {
     }
   }
 
-  // addBtnFn({ target }) {
-  //   console.log(target);
-  // }
+  addBtnFn({ target }) {
+    console.log(target.value);
+  }
   // comentei essa função pois entendo que a ideia do emmanoel é usar isso no futuro
 
   render() {
@@ -88,7 +88,7 @@ class SearchPage extends React.Component {
           />
           <RenderProduct
             products={ apiResponseFromTyped }
-            // addBtnFn={ this.addBtnFn }
+            addBtnFn={ this.addBtnFn }
           />
         </div>
 
