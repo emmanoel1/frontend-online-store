@@ -9,40 +9,25 @@ class ShoppingCart extends React.Component {
   constructor() {
     super();
     this.state = {
-      count: [],
-      counted: 0,
     };
   }
 
-  itemsCount() {
-    const { addedProducts } = this.props;
-    this.setState({
-      count: addedProducts,
-    });
-    const { count } = this.state;
-    console.log(count);
-  }
-
-  itemsCounted() {
-    const { count } = this.state;
-    this.setState({
-      counted: count.length,
-    });
-  }
-
   render() {
-    const { counted } = this.state;
+    const { addedProducts } = this.props;
     return (
       <div>
         <Link
-          to="/ShoppingCartPage"
+          to={ {
+            pathname: '/ShoppingCartPage',
+            state: { id: addedProducts },
+          } }
           data-testid="shopping-cart-button"
         >
           <div className="cart_button">
             Carrinho de Compras
           </div>
         </Link>
-        <span>{counted}</span>
+        {/* <span>{}</span> */}
       </div>
     );
   }
