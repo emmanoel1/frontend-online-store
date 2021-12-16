@@ -56,7 +56,7 @@ class SearchPage extends React.Component {
       });
     } else if (idCategory !== '') {
       console.log('terceriro if');
-      getProductsFromCategoryAndQuery(idCategory).then((query) => {
+      getProductsFromCategoryAndQuery(idCategory, '').then((query) => {
         this.setState({ apiResponseFromTyped: query.results });
       });
     }
