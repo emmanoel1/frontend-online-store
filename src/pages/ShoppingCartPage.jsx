@@ -12,17 +12,10 @@ class ShoppingCartPage extends React.Component {
     this.addedItems = this.addedItems.bind(this);
   }
 
-  componentDidMount() {
-    const { location } = this.props;
-    const { id } = location.state;
-    console.log(id);
-  }
-
-  addedItems(productId) {
-    console.log(productId);
-    getProductsFromProductID(productId).then((query) => {
+  addedItems() {
+    getProductsFromProductID('MLB1920967987').then((query) => {
       this.setState({
-        apiResponse: query.results,
+        apiResponse: query,
       });
     });
   }
@@ -31,6 +24,8 @@ class ShoppingCartPage extends React.Component {
     const { location } = this.props;
     const productId = location.state.id;
     const { apiResponse } = this.state;
+    console.log(apiResponse);
+    // this.addedItems(productId);
     // conteúdo que Ajudou a passagem de props por link : https://www.youtube.com/watch?v=nmbX2QL7ZJc
     return (
       <>
@@ -53,7 +48,6 @@ class ShoppingCartPage extends React.Component {
     );
   }
 }
-
 ShoppingCartPage.propTypes = {
   location: PropTypes.objectOf(Object).isRequired,
 };
