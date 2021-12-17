@@ -5,7 +5,8 @@ import ShoppingCart from '../components/header/ShoppingCart';
 import CategoryList from '../components/categotyList/CategoryList';
 import RenderProduct from '../components/render_product/RenderProduct';
 // import InputAndButton from '../components/InputAndButton';
-import { getProductsFromCategoryAndQuery } from '../services/api';
+import { getProductsFromCategoryAndQuery,
+  getProductsFromProductID } from '../services/api';
 
 class SearchPage extends React.Component {
   constructor() {
@@ -14,7 +15,7 @@ class SearchPage extends React.Component {
       typed: '',
       idCategory: '',
       apiResponseFromTyped: [],
-      itemOnCart: '',
+      itemOnCart: [],
     };
     this.onTypedInput = this.onTypedInput.bind(this);
     this.onClickedBtn = this.onClickedBtn.bind(this);
@@ -63,9 +64,11 @@ class SearchPage extends React.Component {
     }
   }
 
-  addBtnFn({ target }) {
+  async addBtnFn({ target }) {
+    const productId = target.value;
+    const fetchProduct = await getProductsFromProductID(productId);
     this.setState({
-      itemOnCart: target.value,
+      itemOnCart: fetchProduct,
     });
   }
   // comentei essa função pois entendo que a ideia do emmanoel é usar isso no futuro

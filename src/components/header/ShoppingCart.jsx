@@ -19,7 +19,7 @@ class ShoppingCart extends React.Component {
         <Link
           to={ {
             pathname: '/ShoppingCartPage',
-            state: { id: addedProducts },
+            state: { product: addedProducts },
           } }
           data-testid="shopping-cart-button"
         >
@@ -34,7 +34,7 @@ class ShoppingCart extends React.Component {
 }
 
 ShoppingCart.propTypes = {
-  addedProducts: PropTypes.string.isRequired,
+  addedProducts: PropTypes.arrayOf(Object).isRequired,
 };
 
 // Start Req8
