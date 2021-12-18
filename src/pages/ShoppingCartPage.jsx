@@ -11,33 +11,31 @@ class ShoppingCartPage extends React.Component {
 
   render() {
     const { location } = this.props;
-    const test = [location.state.product];
-    console.log(test);
+    const products = location.state.product;
     // conteúdo que Ajudou a passagem de props por link : https://www.youtube.com/watch?v=nmbX2QL7ZJc
+    const empty = (
+      <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>);
+    const itemCount = (
+      <p data-testid="shopping-cart-product-quantity">
+        {`Total de itens no carrinho: ${products.length}`}
+      </p>);
     return (
       <>
         <h1>Esse aqui é a página do carrinho</h1>
         <div className="conteiner">
-          {test.map((product) => (
-            <div key={ product.id }>
-              <img src={ product.thumbnail } alt={ product.title } />
-              <p data-test-id="shopping-cart-product-name">{ product.title }</p>
-            </div>
-          ))}
-          <span data-test-id="shopping-cart-product-quantity">
-            {test.length}
-          </span>
-        </div>
-        {/* {test === '' ? (
-            <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
-          ) : (
-            test.map((product) => (
+          {products.length === 0 ? empty
+            : (products.map((product) => (
               <div key={ product.id }>
+                <p data-testid="shopping-cart-product-name">{ product.title }</p>
                 <img src={ product.thumbnail } alt={ product.title } />
-                <p>{ product.id }</p>
+                <span>R$</span>
+                {product.price}
               </div>
-            ))
-          )} */}
+            )))}
+        </div>
+        <div>
+          {itemCount}
+        </div>
       </>
     );
   }
@@ -48,7 +46,3 @@ ShoppingCartPage.propTypes = {
 };
 
 export default ShoppingCartPage;
-// <p>{location.state.id}</p>
-// <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
-// {/* O texto acima é parte do requisito 03 e não pode ser apagado  */}
-// <p>{location.state.id}</p>

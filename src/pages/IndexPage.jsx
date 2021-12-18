@@ -67,11 +67,11 @@ class SearchPage extends React.Component {
   async addBtnFn({ target }) {
     const productId = target.value;
     const fetchProduct = await getProductsFromProductID(productId);
+    const { itemOnCart } = this.state;
     this.setState({
-      itemOnCart: fetchProduct,
+      itemOnCart: [...itemOnCart, fetchProduct],
     });
   }
-  // comentei essa função pois entendo que a ideia do emmanoel é usar isso no futuro
 
   render() {
     const { typed, apiResponseFromTyped, itemOnCart } = this.state;
@@ -97,6 +97,7 @@ class SearchPage extends React.Component {
           <RenderProduct
             products={ apiResponseFromTyped }
             addBtnFn={ this.addBtnFn }
+            addedProducts={ itemOnCart }
           />
         </div>
 

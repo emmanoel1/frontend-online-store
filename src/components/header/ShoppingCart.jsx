@@ -17,17 +17,16 @@ class ShoppingCart extends React.Component {
     return (
       <div>
         <Link
+          data-testid="shopping-cart-button"
           to={ {
             pathname: '/ShoppingCartPage',
             state: { product: addedProducts },
           } }
-          data-testid="shopping-cart-button"
         >
           <div className="cart_button">
             Carrinho de Compras
           </div>
         </Link>
-        {/* <span>{}</span> */}
       </div>
     );
   }
@@ -37,5 +36,4 @@ ShoppingCart.propTypes = {
   addedProducts: PropTypes.arrayOf(Object).isRequired,
 };
 
-// Start Req8
 export default ShoppingCart;
