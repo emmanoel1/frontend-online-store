@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { getProductsFromProductID } from '../../services/api';
 
 class Details extends React.Component {
   constructor() {
@@ -12,13 +11,11 @@ class Details extends React.Component {
     this.addBtnFn = this.addBtnFn.bind(this);
   }
 
-  async addBtnFn({ target }) {
+  addBtnFn({ target }) {
     const productId = target.value;
-    const fetchProduct = await getProductsFromProductID(productId);
     const { itemOnCart } = this.state;
-    const { location } = this.props;
     this.setState({
-      itemOnCart: [...itemOnCart, ...location.state.cartProducts, fetchProduct],
+      itemOnCart: [...itemOnCart, productId],
     });
   }
 
@@ -26,7 +23,7 @@ class Details extends React.Component {
     const { location } = this.props;
     const products = [location.state.products];
     const { itemOnCart } = this.state;
-
+    console.log(itemOnCart);
     return (
       <div>
         <Link

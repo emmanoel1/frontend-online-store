@@ -5,8 +5,7 @@ import ShoppingCart from '../components/header/ShoppingCart';
 import CategoryList from '../components/categotyList/CategoryList';
 import RenderProduct from '../components/render_product/RenderProduct';
 // import InputAndButton from '../components/InputAndButton';
-import { getProductsFromCategoryAndQuery,
-  getProductsFromProductID } from '../services/api';
+import { getProductsFromCategoryAndQuery } from '../services/api';
 
 class SearchPage extends React.Component {
   constructor() {
@@ -64,12 +63,11 @@ class SearchPage extends React.Component {
     }
   }
 
-  async addBtnFn({ target }) {
+  addBtnFn({ target }) {
     const productId = target.value;
-    const fetchProduct = await getProductsFromProductID(productId);
     const { itemOnCart } = this.state;
     this.setState({
-      itemOnCart: [...itemOnCart, fetchProduct],
+      itemOnCart: [...itemOnCart, productId],
     });
   }
 
