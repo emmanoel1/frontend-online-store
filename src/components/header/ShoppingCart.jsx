@@ -10,15 +10,7 @@ class ShoppingCart extends React.Component {
     super();
     this.state = {
     };
-    // this.test = this.test.bind(this);
   }
-  // componentDidMount() {
-  //   const { addedProducts } = this.props;
-  //   this.test(addedProducts);
-  // }
-
-  // test() {
-  // }
 
   render() {
     const { addedProducts } = this.props;

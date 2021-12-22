@@ -6,7 +6,6 @@ import { getProductsFromProductID } from '../services/api';
 class ShoppingCartPage extends React.Component {
   constructor() {
     super();
-    // const { location } = props;
     this.state = {
       products: [],
     };
@@ -18,27 +17,17 @@ class ShoppingCartPage extends React.Component {
     this.handleProduct(location.state.product);
   }
 
-  async handleProduct(param) {
-    // const test = param.map(async (a) => {
+  async handleProduct(product) {
     const { products } = this.state;
-    const productsObj = await getProductsFromProductID(param);
-    this.setState({
-      products: [...products, productsObj],
+    const test = [];
+    product.forEach(async (element, index) => {
+      const productsObj = await getProductsFromProductID(product[index]);
+      test.push(productsObj);
+      this.setState({
+        products: [...products, ...test],
+      });
+      console.log(index, element);
     });
-    // param.forEach(async (element) => {
-    //   if (element !== null) {
-    //     const productsObj = await getProductsFromProductID(element);
-    //     console.log(productsObj);
-    //     this.setState({
-    //       products: [...products, productsObj],
-    //     });
-    //   }
-    // });
-    // //   console.log(productsObj);
-    // // });
-    // // const productsObj = await getProductsFromProductID(param);
-    // console.log(param);
-    // console.log(products);
   }
 
   render() {
