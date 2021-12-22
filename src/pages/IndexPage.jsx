@@ -76,6 +76,7 @@ class SearchPage extends React.Component {
     });
     const test = [...itemOnCart, productId];
     localStorage.setItem('cart', JSON.stringify(test));
+    target.disabled = true;
   }
 
   cartMount() {

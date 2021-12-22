@@ -34,6 +34,7 @@ class ShowProduct extends React.Component {
               </p>
             </Link>
             <button
+              disabled={ false }
               className="button is-primary is-small"
               data-testid="product-add-to-cart"
               type="submit"
