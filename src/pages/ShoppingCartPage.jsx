@@ -1,37 +1,37 @@
 // PÁGINA DE BUSCAS
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { getProductsFromProductID } from '../services/api';
 
 class ShoppingCartPage extends React.Component {
   constructor(Props) {
     super(Props);
-    const { location } = Props;
+    // const { location } = Props;
     this.state = {
-      handle: location.state.product,
+      // handle: location.state.product,
       products: [],
     };
     this.handleProduct = this.handleProduct.bind(this);
     this.increase = this.increase.bind(this);
     this.decrease = this.decrease.bind(this);
-    this.quantity = this.quantity.bind(this);
     this.removeItem = this.removeItem.bind(this);
   }
 
   componentDidMount() {
-    this.handleProduct();
+    const { location } = this.props;
+    this.handleProduct(location.state.product);
   }
 
-  handleProduct() {
-    const { products, handle } = this.state;
-    console.log(handle);
-    const productId = handle;
+  handleProduct(product) {
+    const { products } = this.state;
+    const productId = product;
     const test = [];
     productId.forEach(async (element, index) => {
       console.log(element);
       const productsObj = await getProductsFromProductID(productId[index]);
+      productsObj.quantity = 1;
       console.log(productsObj);
-      test.push();
+      test.push(productsObj);
       this.setState({
         products: [...products, ...test],
       });
@@ -69,12 +69,6 @@ class ShoppingCartPage extends React.Component {
     localStorage.setItem('cart', JSON.stringify(items));
   }
 
-  quantity(id) {
-    console.log(id);
-    // console.log(test.find((item) => (item.id === id)));
-    return 1;
-  }
-
   render() {
     // conteúdo que Ajudou a passagem de props por link : https://www.youtube.com/watch?v=nmbX2QL7ZJc
     const { products } = this.state;
@@ -86,7 +80,7 @@ class ShoppingCartPage extends React.Component {
     const empty = (
       <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>);
     const itemCount = (
-      <p data-testid="shopping-cart-product-quantity">
+      <p>
         {`Total de itens no carrinho: ${products.length}`}
       </p>);
     return (
@@ -136,8 +130,8 @@ class ShoppingCartPage extends React.Component {
   }
 }
 
-// ShoppingCartPage.propTypes = {
-//   location: PropTypes.objectOf(Object).isRequired,
-// };
+ShoppingCartPage.propTypes = {
+  location: PropTypes.objectOf(Object).isRequired,
+};
 
 export default ShoppingCartPage;
