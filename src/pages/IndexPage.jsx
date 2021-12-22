@@ -20,6 +20,11 @@ class SearchPage extends React.Component {
     this.onClickedBtn = this.onClickedBtn.bind(this);
     this.testes = this.testes.bind(this);
     this.addBtnFn = this.addBtnFn.bind(this);
+    this.cartMount = this.cartMount.bind(this);
+  }
+
+  componentDidMount() {
+    this.cartMount();
   }
 
   onTypedInput({ target }) {
@@ -69,6 +74,17 @@ class SearchPage extends React.Component {
     this.setState({
       itemOnCart: [...itemOnCart, productId],
     });
+    const test = [...itemOnCart, productId];
+    localStorage.setItem('cart', JSON.stringify(test));
+  }
+
+  cartMount() {
+    const cartItems = JSON.parse(localStorage.getItem('cart'));
+    if (cartItems !== null) {
+      this.setState({
+        itemOnCart: cartItems,
+      });
+    }
   }
 
   render() {
@@ -86,6 +102,7 @@ class SearchPage extends React.Component {
           <ShoppingCart
             addedProducts={ itemOnCart }
           />
+          <p data-testid="shopping-cart-size">{itemOnCart.length}</p>
         </div>
 
         <div className="conteiner">

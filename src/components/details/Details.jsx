@@ -23,7 +23,7 @@ class Details extends React.Component {
     const { location } = this.props;
     const products = [location.state.products];
     const { itemOnCart } = this.state;
-    console.log(itemOnCart);
+    const cartProduct = location.state.cartProducts;
     return (
       <div>
         <Link
@@ -37,6 +37,7 @@ class Details extends React.Component {
             Carrinho de Compras
           </div>
         </Link>
+        <p data-testid="shopping-cart-size">{cartProduct.length}</p>
         {products.map((product) => (
           <div key={ product.id } className="product">
             <figure className="product_list">
