@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class Details extends React.Component {
-  constructor() {
+  constructor(Props) {
     super();
+    const { location } = Props;
     this.state = {
-      itemOnCart: [],
+      itemOnCart: [...location.state.cartProducts],
     };
     this.addBtnFn = this.addBtnFn.bind(this);
   }
@@ -23,7 +24,6 @@ class Details extends React.Component {
     const { location } = this.props;
     const products = [location.state.products];
     const { itemOnCart } = this.state;
-    const cartProduct = location.state.cartProducts;
     return (
       <div>
         <Link
@@ -37,7 +37,7 @@ class Details extends React.Component {
             Carrinho de Compras
           </div>
         </Link>
-        <p data-testid="shopping-cart-size">{cartProduct.length}</p>
+        <p data-testid="shopping-cart-size">{itemOnCart.length}</p>
         {products.map((product) => (
           <div key={ product.id } className="product">
             <figure className="product_list">
