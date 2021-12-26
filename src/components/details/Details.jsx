@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import FormEvaluation from '../Product_Evaluation/FormEvaluation';
 
 class Details extends React.Component {
   constructor(Props) {
@@ -59,6 +60,7 @@ class Details extends React.Component {
             </button>
           </div>
         ))}
+        <FormEvaluation />
       </div>
     );
   }
