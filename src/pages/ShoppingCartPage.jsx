@@ -26,13 +26,14 @@ class ShoppingCartPage extends React.Component {
 
   async handleProduct(product) {
     const { products } = this.state;
-    // ["MLB923744806", "MLB918281211"]
     const arrOfProducts = [];
     product.forEach(async (element) => {
       // console.log('find:', arrOfProducts.find((item) => (item.id === element)));
       await getProductsFromProductID(element).then((query) => {
         console.log('query:', query.id);
         query.quantity = 1;
+        query.increaseIsDisabled = false;
+        query.decreaseIsDisabled = false;
         arrOfProducts.push(query);
         this.setState({
           products: [...products, ...arrOfProducts],
@@ -43,20 +44,43 @@ class ShoppingCartPage extends React.Component {
 
   increase({ target }) {
     const { products } = this.state;
-    products.find((item) => (item.id === target.id)).quantity += 1;
-    const quantityUpdate = products;
-    this.setState({
-      products: quantityUpdate,
-    });
+    const product = products.find((item) => (item.id === target.id));
+    if (product.quantity < product.available_quantity) {
+      product.increaseIsDisabled = false;
+      product.decreaseIsDisabled = false;
+      console.log('rodou');
+      product.quantity += 1;
+      const quantityUpdated = products;
+      this.setState({
+        products: quantityUpdated,
+      });
+    }
+    if (product.quantity === product.available_quantity) {
+      product.increaseIsDisabled = true;
+      product.decreaseIsDisabled = false;
+      const quantityUpdated = products;
+      this.setState({
+        products: quantityUpdated,
+      });
+    }
   }
 
   decrease({ target }) {
-    console.log(target.id);
+    console.log(target);
     const { products } = this.state;
-    const actualQuant = products.find((item) => (item.id === target.id)).quantity;
-    if (actualQuant > 0) {
-      products.find((item) => (item.id === target.id)).quantity -= 1;
-      const quantityUpdate = products;
+    const product = products.find((item) => (item.id === target.id));
+    const quantityUpdate = products;
+    if (product.quantity > 0) {
+      product.decreaseIsDisabled = false;
+      product.increaseIsDisabled = false;
+      product.quantity -= 1;
+      this.setState({
+        products: quantityUpdate,
+      });
+    }
+    if (product.quantity === 0) {
+      product.decreaseIsDisabled = true;
+      product.increaseIsDisabled = false;
       this.setState({
         products: quantityUpdate,
       });
@@ -79,7 +103,6 @@ class ShoppingCartPage extends React.Component {
     this.setState({
       products: a,
     });
-    // ["MLB923744806", "MLB918281211"]
   }
 
   render() {
@@ -110,6 +133,7 @@ class ShoppingCartPage extends React.Component {
                 <img src={ product.thumbnail } alt={ product.title } />
               </figure>
               <button
+                disabled={ product.decreaseIsDisabled }
                 type="button"
                 data-testid="product-decrease-quantity"
                 id={ product.id }
@@ -119,6 +143,7 @@ class ShoppingCartPage extends React.Component {
               </button>
               <p data-testid="shopping-cart-product-quantity">{product.quantity}</p>
               <button
+                disabled={ product.increaseIsDisabled }
                 type="button"
                 data-testid="product-increase-quantity"
                 id={ product.id }
