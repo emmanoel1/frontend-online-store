@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './render_product.css';
 import { Link } from 'react-router-dom';
+import shippingCarImg from '../../img/shipping.png';
 
 class ShowProduct extends React.Component {
   constructor() {
@@ -43,6 +44,14 @@ class ShowProduct extends React.Component {
             >
               Adicionar Ao Carrinho
             </button>
+            {product.shipping.free_shipping === true ? (
+              <img
+                data-testid="free-shipping"
+                className="isfree"
+                src={ shippingCarImg }
+                alt="Frete Grátis"
+              />
+            ) : ''}
           </div>
         ))}
       </div>
