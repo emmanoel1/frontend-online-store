@@ -1,5 +1,6 @@
 // PÁGINA DE BUSCAS
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getProductsFromProductID } from '../services/api';
 
@@ -124,6 +125,16 @@ class ShoppingCartPage extends React.Component {
         </div>
         <div>
           {itemCount}
+        </div>
+        <div>
+          <Link to="/CheckoutPage">
+            <button
+              type="button"
+              data-testid="checkout-products"
+            >
+              Finalizar Compra
+            </button>
+          </Link>
         </div>
       </>
     );
