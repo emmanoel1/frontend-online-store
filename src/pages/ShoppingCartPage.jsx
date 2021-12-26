@@ -4,11 +4,9 @@ import PropTypes from 'prop-types';
 import { getProductsFromProductID } from '../services/api';
 
 class ShoppingCartPage extends React.Component {
-  constructor(Props) {
-    super(Props);
-    // const { location } = Props;
+  constructor() {
+    super();
     this.state = {
-      // handle: location.state.product,
       products: [],
     };
     this.handleProduct = this.handleProduct.bind(this);
@@ -22,24 +20,28 @@ class ShoppingCartPage extends React.Component {
     this.handleProduct(location.state.product);
   }
 
-  handleProduct(product) {
+  shouldComponentUpdate() {
+    return true;
+  }
+
+  async handleProduct(product) {
     const { products } = this.state;
-    const productId = product;
-    const test = [];
-    productId.forEach(async (element, index) => {
-      console.log(element);
-      const productsObj = await getProductsFromProductID(productId[index]);
-      productsObj.quantity = 1;
-      console.log(productsObj);
-      test.push(productsObj);
-      this.setState({
-        products: [...products, ...test],
+    // ["MLB923744806", "MLB918281211"]
+    const arrOfProducts = [];
+    product.forEach(async (element) => {
+      // console.log('find:', arrOfProducts.find((item) => (item.id === element)));
+      await getProductsFromProductID(element).then((query) => {
+        console.log('query:', query.id);
+        query.quantity = 1;
+        arrOfProducts.push(query);
+        this.setState({
+          products: [...products, ...arrOfProducts],
+        });
       });
     });
   }
 
   increase({ target }) {
-    // console.log(target.quantity);
     const { products } = this.state;
     products.find((item) => (item.id === target.id)).quantity += 1;
     const quantityUpdate = products;
@@ -62,21 +64,28 @@ class ShoppingCartPage extends React.Component {
   }
 
   removeItem({ target }) {
+    const { id } = target;
+
     const items = JSON.parse(localStorage.getItem('cart'));
-    const index = items.indexOf(target.id);
+    const index = items.indexOf(id);
     items.splice(index, 1);
-    console.log(items);
     localStorage.setItem('cart', JSON.stringify(items));
+
+    const { products } = this.state;
+    const a = products;
+    const clicked = a.find((item) => (item.id === id));
+    const indexState = a.indexOf(clicked);
+    a.splice(indexState, 1);
+    this.setState({
+      products: a,
+    });
+    // ["MLB923744806", "MLB918281211"]
   }
 
   render() {
     // conteúdo que Ajudou a passagem de props por link : https://www.youtube.com/watch?v=nmbX2QL7ZJc
     const { products } = this.state;
-    // const products = setTimeout(() => {
-    //   return products;
-    // }, 1000);
-    // console.log(products);
-    // this.handleProduct();
+
     const empty = (
       <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>);
     const itemCount = (
