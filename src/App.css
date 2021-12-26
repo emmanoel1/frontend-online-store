@@ -27,15 +27,8 @@ html {
   width: 50%;
 }
 
-.cart_button {
-  background: url('./img/icon_carrinho.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  display: block;
-  height: 40px;
-  overflow: hidden;
-  text-indent: -1000%;
-  width: 40px;
+.btn-search {
+  margin-left: 15px;
 }
 
 p {
@@ -44,16 +37,8 @@ p {
 
 .conteiner {
   background: #d3d1d1;
-  display: flex;
+  display: grid;
+  grid-template-columns: 25% 1fr;
   margin: auto;
   width: 80vw;
-}
-
-.content_categories {
-  border: solid 1px black;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding: 20px;
-  width: 28%;
 }

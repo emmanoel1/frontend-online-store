@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import IndexPage from '../pages/IndexPage';
 import ShoppingCartPage from '../pages/ShoppingCartPage';
-// import CategoryPage from '../pages/CategoryPage';
+import Details from './details/Details';
 
 class Content extends React.Component {
   render() {
@@ -10,6 +10,7 @@ class Content extends React.Component {
       <Switch>
         <Route exact path="/" component={ IndexPage } />
         <Route exact path="/ShoppingCartPage" component={ ShoppingCartPage } />
+        <Route exact path="/Details" component={ Details } />
         {/* <Route exact path="/CategoryPage/:id" component={ CategoryPage } /> */}
       </Switch>
     );
