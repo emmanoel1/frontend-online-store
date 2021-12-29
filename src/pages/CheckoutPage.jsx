@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-// import ShoppingCartPage from './ShoppingCartPage';
 
 export default class CheckoutPage extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       fullName: '',
       email: '',
@@ -11,17 +10,20 @@ export default class CheckoutPage extends Component {
       phone: '',
       cep: '',
       address: '',
-
     };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
   }
 
   render() {
     const { fullName, email, cpf, phone, cep, address } = this.state;
+
     return (
       <main>
-        {/* <section>
-          <ShoppingCartPage />
-        </section> */}
         <section>
           <h2>Informações do Comprador</h2>
           <form>
@@ -31,6 +33,7 @@ export default class CheckoutPage extends Component {
                 name="fullName"
                 placeholder="Nome Completo"
                 value={ fullName }
+                onChange={ (event) => this.handleChange(event) }
               />
             </label>
             <label htmlFor="email">
@@ -39,6 +42,7 @@ export default class CheckoutPage extends Component {
                 name="email"
                 placeholder="Email"
                 value={ email }
+                onChange={ (event) => this.handleChange(event) }
               />
             </label>
             <label htmlFor="cpf">
@@ -47,6 +51,7 @@ export default class CheckoutPage extends Component {
                 name="cpf"
                 placeholder="CPF"
                 value={ cpf }
+                onChange={ (event) => this.handleChange(event) }
               />
             </label>
             <label htmlFor="phone">
@@ -55,6 +60,7 @@ export default class CheckoutPage extends Component {
                 name="phone"
                 placeholder="Telefone"
                 value={ phone }
+                onChange={ (event) => this.handleChange(event) }
               />
             </label>
             <label htmlFor="cep">
@@ -63,6 +69,7 @@ export default class CheckoutPage extends Component {
                 name="cep"
                 placeholder="CEP"
                 value={ cep }
+                onChange={ (event) => this.handleChange(event) }
               />
             </label>
             <label htmlFor="address">
@@ -71,6 +78,7 @@ export default class CheckoutPage extends Component {
                 name="address"
                 placeholder="Endereço"
                 value={ address }
+                onChange={ (event) => this.handleChange(event) }
               />
             </label>
             <button
