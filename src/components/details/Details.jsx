@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import FormEvaluation from '../Product_Evaluation/FormEvaluation';
+import shippingCarImg from '../../img/shipping.png';
 
 class Details extends React.Component {
   constructor(Props) {
@@ -41,6 +42,14 @@ class Details extends React.Component {
         <p data-testid="shopping-cart-size">{itemOnCart.length}</p>
         {products.map((product) => (
           <div key={ product.id } className="product">
+            {product.shipping.free_shipping === true ? (
+              <img
+                data-testid="free-shipping"
+                className="isfree-details"
+                src={ shippingCarImg }
+                alt="Frete Grátis"
+              />
+            ) : ''}
             <figure className="product_list">
               <img src={ product.thumbnail } alt={ product.title } />
             </figure>
