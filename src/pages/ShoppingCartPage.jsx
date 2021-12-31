@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { getProductsFromProductID } from '../services/api';
+// import { getProductsFromProductID } from '../services/api';
 
 class ShoppingCartPage extends React.Component {
   constructor() {
@@ -21,25 +21,9 @@ class ShoppingCartPage extends React.Component {
     this.handleProduct(location.state.product);
   }
 
-  shouldComponentUpdate() {
-    return true;
-  }
-
-  async handleProduct(product) {
-    const { products } = this.state;
-    const arrOfProducts = [];
-    product.forEach(async (element) => {
-      // console.log('find:', arrOfProducts.find((item) => (item.id === element)));
-      await getProductsFromProductID(element).then((query) => {
-        console.log('query:', query.id);
-        query.quantity = 1;
-        query.increaseIsDisabled = false;
-        query.decreaseIsDisabled = false;
-        arrOfProducts.push(query);
-        this.setState({
-          products: [...products, ...arrOfProducts],
-        });
-      });
+  handleProduct(product) {
+    this.setState({
+      products: product,
     });
   }
 
