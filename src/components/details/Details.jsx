@@ -9,16 +9,20 @@ class Details extends React.Component {
     super();
     const { location } = Props;
     this.state = {
+      searchedItems: [...location.state.apiProducts],
       itemOnCart: [...location.state.cartProducts],
     };
     this.addBtnFn = this.addBtnFn.bind(this);
   }
 
   addBtnFn({ target }) {
-    const productId = target.value;
-    const { itemOnCart } = this.state;
+    const { itemOnCart, searchedItems } = this.state;
+    const obj = searchedItems.find((result) => (result.id === target.value));
+    obj.quantity = 1;
+    obj.increaseIsDisabled = false;
+    obj.decreaseIsDisabled = false;
     this.setState({
-      itemOnCart: [...itemOnCart, productId],
+      itemOnCart: [...itemOnCart, obj],
     });
   }
 

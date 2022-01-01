@@ -13,7 +13,7 @@ class ShowProduct extends React.Component {
   }
 
   render() {
-    const { products, addBtnFn, addedProducts } = this.props;
+    const { products, addBtnFn, addedProducts, searchedProducts } = this.props;
     return (
       <div className="products-results">
         { products.map((product) => (
@@ -22,7 +22,9 @@ class ShowProduct extends React.Component {
               data-testid="product-detail-link"
               to={ {
                 pathname: '/Details',
-                state: { products: product, cartProducts: addedProducts },
+                state: { products: product,
+                  cartProducts: addedProducts,
+                  apiProducts: searchedProducts },
               } }
             >
               <figure className="product_list">
@@ -60,6 +62,7 @@ class ShowProduct extends React.Component {
 }
 
 ShowProduct.propTypes = {
+  searchedProducts: PropTypes.arrayOf(Object).isRequired,
   addedProducts: PropTypes.arrayOf(Object).isRequired,
   products: PropTypes.arrayOf(Object).isRequired,
   addBtnFn: PropTypes.func.isRequired,

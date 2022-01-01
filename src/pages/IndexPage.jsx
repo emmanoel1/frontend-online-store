@@ -4,7 +4,6 @@ import SearchBar from '../components/header/SearchBar';
 import ShoppingCart from '../components/header/ShoppingCart';
 import CategoryList from '../components/categotyList/CategoryList';
 import RenderProduct from '../components/render_product/RenderProduct';
-// import InputAndButton from '../components/InputAndButton';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 
 class SearchPage extends React.Component {
@@ -70,11 +69,15 @@ class SearchPage extends React.Component {
 
   addBtnFn({ target }) {
     const productId = target.value;
-    const { itemOnCart } = this.state;
+    const { itemOnCart, apiResponseFromTyped } = this.state;
+    const obj = apiResponseFromTyped.find((result) => (result.id === productId));
+    obj.quantity = 1;
+    obj.increaseIsDisabled = false;
+    obj.decreaseIsDisabled = false;
     this.setState({
-      itemOnCart: [...itemOnCart, productId],
+      itemOnCart: [...itemOnCart, obj],
     });
-    const test = [...itemOnCart, productId];
+    const test = [...itemOnCart, obj];
     localStorage.setItem('cart', JSON.stringify(test));
     target.disabled = true;
   }
@@ -114,6 +117,7 @@ class SearchPage extends React.Component {
             products={ apiResponseFromTyped }
             addBtnFn={ this.addBtnFn }
             addedProducts={ itemOnCart }
+            searchedProducts={ apiResponseFromTyped }
           />
         </div>
 
