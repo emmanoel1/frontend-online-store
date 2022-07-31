@@ -44,8 +44,6 @@ Tecnologias:
 
 ## Documentação da API do Mercado Livre
 
-Sua página _web_ irá consumir os dados da API do _Mercado Livre_ para realizar a busca de itens da sua loja online. Para realizar essas buscas, vocês precisarão consultar os seguintes _endpoints_:
-
 - Para listar as categorias disponíveis:
   - Tipo da requisição: `GET`
   - Endpoint: https://api.mercadolibre.com/sites/MLB/categories
