@@ -1,3 +1,5 @@
+<img src="./online-store.png" alt="Front end online store page" />
+
 # Boas vindas ao repositório do projeto Front-End Online Store!
 
 Neste projeto é uma versão simplificada, sem persistência no banco de dados, de uma loja online, desenvolvido em grupo suas funcionalidades de acordo com demandas definidas em um quadro Kanban, em um cenário mais próximo ao do mercado de trabalho. A partir dessas demandas, temos uma aplicação onde os usuários poderão:
