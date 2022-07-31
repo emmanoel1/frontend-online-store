@@ -11,6 +11,7 @@ E por fim, finalizar a compra (simulada) dos itens selecionados.
 
 # Quer Testar o APP?
 
+https://emmanoel1-online-store.pages.dev/
 
 ---
 
