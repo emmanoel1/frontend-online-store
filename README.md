@@ -7,13 +7,12 @@ Interagir com os produtos buscados de modo a adicioná-los e removê-los de um c
 Visualizar detalhes e avaliações prévias de um produto, bem como criar novas avaliações;
 E por fim, finalizar a compra (simulada) dos itens selecionados.
 
----
+
 
 # Quer Testar o APP?
 
 https://emmanoel1-online-store.pages.dev/
 
----
 
 # Habilidades
 
@@ -24,8 +23,6 @@ Nesse projeto, foram praticados:
 * Scrum
 * Trabalhar em equipes utilizando Kanban ou Scrum de maneira eficaz
 * Praticar algumas das habilidades desenvolvidas no módulo de Front-End
-
----
 
 # Instruções para rodar o projeto Localmente:
 
