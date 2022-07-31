@@ -26,6 +26,9 @@ Nesse projeto, foram praticados:
 * Trabalhar em equipes utilizando Kanban ou Scrum de maneira eficaz
 * Praticar algumas das habilidades desenvolvidas no módulo de Front-End
 
+Tecnologias:
+* React Em Componentes de Classes
+
 # Instruções para rodar o projeto Localmente:
 
 1. Clone o repositório
